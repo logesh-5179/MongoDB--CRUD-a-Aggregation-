@@ -1,0 +1,318 @@
+Microsoft Windows [Version 10.0.22621.4037]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\logeshwaran>use Library
+'use' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\logeshwaran>mongosh
+Current Mongosh Log ID: 66c32b85e90461594a2710bb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
+Using MongoDB:          7.0.12
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-08-19T10:55:24.883+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use Library
+switched to db Library
+Library> db.lib.find()
+[
+  {
+    _id: ObjectId('66c3249a5d273a096c2710bc'),
+    Book_ID: 1,
+    Title: 'Python programming',
+    Author_ID: 5001,
+    Author_Name: 'van rossum',
+    Availablity: true,
+    price: 259
+  },
+  {
+    _id: ObjectId('66c3249a5d273a096c2710bd'),
+    Book_ID: 3,
+    Title: 'Java for developers ',
+    Author_ID: 5301,
+    Author_Name: 'James Gosling',
+    Availablity: false,
+    price: 359
+  },
+  {
+    _id: ObjectId('66c3249a5d273a096c2710be'),
+    Book_ID: 13,
+    Title: 'Data structures',
+    Author_ID: 3301,
+    Author_Name: 'Ashwin ',
+    Availablity: true,
+    price: 1349
+  },
+  {
+    _id: ObjectId('66c3249a5d273a096c2710bf'),
+    Book_ID: 6,
+    Title: 'Flutter',
+    Author_ID: 5311,
+    Author_Name: 'Sabarish',
+    Availablity: true,
+    price: 959
+  },
+  {
+    _id: ObjectId('66c3249a5d273a096c2710c0'),
+    Book_ID: 2,
+    Title: 'Moblile Computing',
+    Author_ID: 5201,
+    Author_Name: 'Magesh',
+    Availablity: false,
+    price: 399
+  }
+]
+Library> db.lib.updateOne({Title:"Mobile Computing"},{ $set:{price:227 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+Library> db.lib.deleteOne({Title:"Data structures"})
+{ acknowledged: true, deletedCount: 1 }
+Library> db.lib.find()
+[
+  {
+    _id: ObjectId('66c3249a5d273a096c2710bc'),
+    Book_ID: 1,
+    Title: 'Python programming',
+    Author_ID: 5001,
+    Author_Name: 'van rossum',
+    Availablity: true,
+    price: 259
+  },
+  {
+    _id: ObjectId('66c3249a5d273a096c2710bd'),
+    Book_ID: 3,
+    Title: 'Java for developers ',
+    Author_ID: 5301,
+    Author_Name: 'James Gosling',
+    Availablity: false,
+    price: 359
+  },
+  {
+    _id: ObjectId('66c3249a5d273a096c2710bf'),
+    Book_ID: 6,
+    Title: 'Flutter',
+    Author_ID: 5311,
+    Author_Name: 'Sabarish',
+    Availablity: true,
+    price: 959
+  },
+  {
+    _id: ObjectId('66c3249a5d273a096c2710c0'),
+    Book_ID: 2,
+    Title: 'Moblile Computing',
+    Author_ID: 5201,
+    Author_Name: 'Magesh',
+    Availablity: false,
+    price: 399
+  }
+]
+Library> db.lib.aggregate([{$group: { _id: "$Category", total: { $sum: "$price" } } }])
+[ { _id: null, total: 1976 } ]
+Library> db.lib.aggregate([{$group: { _id: "$Category", total: { $avg: "$price" } } }])
+[ { _id: null, total: 494 } ]
+Library> db.lib.aggregate([{$group: { _id: "$Category", total: { $max: "$price" } } }])
+[ { _id: null, total: 959 } ]
+Library> db.lib.aggregate([{$group: { _id: "$Category", total: { $min: "$price" } } }])
+[ { _id: null, total: 259 } ]
+Library> .exit
+
+C:\Users\logeshwaran>mogosh
+'mogosh' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\logeshwaran>mongosh
+Current Mongosh Log ID: 66c32ce76e2d9553262710bb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
+Using MongoDB:          7.0.12
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-08-19T10:55:24.883+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use student
+switched to db student
+student> db.students.find()
+[
+  {
+    _id: ObjectId('66c327b071449f78382710bc'),
+    Stu_ID: 2001,
+    Stu_Name: 'John',
+    Gender: 'Male',
+    Age: 20,
+    DOB: ISODate('2004-01-15T06:31:15.000Z'),
+    Course: 'CSE',
+    Instructor: 'Magesh',
+    marks: 489
+  },
+  {
+    _id: ObjectId('66c327b071449f78382710bd'),
+    Stu_ID: 3001,
+    Stu_Name: 'smriti',
+    Gender: 'Female',
+    Age: 20,
+    DOB: ISODate('2004-05-23T06:31:15.000Z'),
+    Course: 'CSE',
+    Instructor: 'Magesh',
+    marks: 389
+  },
+  {
+    _id: ObjectId('66c327b071449f78382710be'),
+    Stu_ID: 2004,
+    Stu_Name: 'Smith',
+    Gender: 'Male',
+    Age: 21,
+    DOB: ISODate('2003-05-12T06:31:15.000Z'),
+    Course: 'ECE',
+    Instructor: 'Anand',
+    marks: 499
+  },
+  {
+    _id: ObjectId('66c327b071449f78382710bf'),
+    Stu_ID: 2021,
+    Stu_Name: 'Badri',
+    Gender: 'Male',
+    Age: 22,
+    DOB: ISODate('2002-11-25T06:31:15.000Z'),
+    Course: 'EEE',
+    Instructor: 'kannan',
+    marks: 398
+  }
+]
+student> db.students.updateOne({Stu-Name:"Smith"},{ $set:{Age:20 } })
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:26)                                                                                                                                                                                              > 1 | db.students.updateOne({Stu-Name:"Smith"},{ $set:{Age:20 } })
+    |                           ^
+  2 |
+
+student> db.students.updateOne({Stu_Name:"Smith"},{ $set:{Age:20 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+student> db.students.aggregate([{$group: { _id: null, total: { $min: "$marks" } } }])
+[ { _id: null, total: 389 } ]
+student> db.students.aggregate([{$group: { _id: null, total: { $max: "$marks" } } }])
+[ { _id: null, total: 499 } ]
+student> db.students.aggregate([{$group: { _id: null, total: { $count:"$Stu_Name"}}}])
+MongoServerError[TypeMismatch]: $count takes no arguments, i.e. $count:{}
+student> db.students.aggregate([{$group: { _id: null, total: { $avg:"$marks"}}}])
+[ { _id: null, total: 443.75 } ]
+student> use events
+switched to db events
+events> db.event.find()
+[
+  {
+    _id: ObjectId('66c32a2fe794e512082710bc'),
+    Event_ID: 1001,
+    Event_name: 'Technical quiz',
+    Event_date: ISODate('2024-12-11T06:31:15.000Z'),
+    Location: 'Coimbatore',
+    Student_ID: 200,
+    Institute: 'HICET',
+    Winner: true
+  },
+  {
+    _id: ObjectId('66c32a2fe794e512082710bd'),
+    Event_ID: 1005,
+    Event_name: 'Debugging',
+    Event_date: ISODate('2024-12-11T06:31:15.000Z'),
+    Location: 'Coimbatore',
+    Student_ID: 202,
+    Institute: 'HIT',
+    Winner: false
+  },
+  {
+    _id: ObjectId('66c32a2fe794e512082710be'),
+    Event_ID: 1031,
+    Event_name: 'Hackathon',
+    Event_date: ISODate('2024-12-11T06:31:15.000Z'),
+    Location: 'Coimbatore',
+    Student_ID: 300,
+    Institute: 'MCET',
+    Winner: true
+  },
+  {
+    _id: ObjectId('66c32a2fe794e512082710bf'),
+    Event_ID: 1001,
+    Event_name: 'Technical quiz',
+    Event_date: ISODate('2024-12-11T06:31:15.000Z'),
+    Location: 'Coimbatore',
+    Student_ID: 230,
+    Institute: 'HICET',
+    Winner: false
+  }
+]
+events> db.event.updateOne({Event_name:"Hackathon"},{ $set:{Location:"Chennai" } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+events> db.event.deleteOne({Event_name:"Debugging"})
+{ acknowledged: true, deletedCount: 1 }
+events> db.event.find()
+[
+  {
+    _id: ObjectId('66c32a2fe794e512082710bc'),
+    Event_ID: 1001,
+    Event_name: 'Technical quiz',
+    Event_date: ISODate('2024-12-11T06:31:15.000Z'),
+    Location: 'Coimbatore',
+    Student_ID: 200,
+    Institute: 'HICET',
+    Winner: true
+  },
+  {
+    _id: ObjectId('66c32a2fe794e512082710be'),
+    Event_ID: 1031,
+    Event_name: 'Hackathon',
+    Event_date: ISODate('2024-12-11T06:31:15.000Z'),
+    Location: 'Chennai',
+    Student_ID: 300,
+    Institute: 'MCET',
+    Winner: true
+  },
+  {
+    _id: ObjectId('66c32a2fe794e512082710bf'),
+    Event_ID: 1001,
+    Event_name: 'Technical quiz',
+    Event_date: ISODate('2024-12-11T06:31:15.000Z'),
+    Location: 'Coimbatore',
+    Student_ID: 230,
+    Institute: 'HICET',
+    Winner: false
+  }
+]
+events> db.event.aggregate([{$group: { _id: null, Firstevent: { $first:"$Event_date"}}}])
+[ { _id: null, Firstevent: ISODate('2024-12-11T06:31:15.000Z') } ]
+events> db.event.aggregate([{$group: { _id: null,Event_name:"$Event_name", FirstEvent:{$first:"$Event_date"}}}])
+MongoServerError[Location40234]: The field 'Event_name' must be an accumulator object
+events> db.event.aggregate([{$group: { Event:"$Event_name", FirstEvent:{$first:"$Event_date"}}}])
+MongoServerError[Location40234]: The field 'Event' must be an accumulator object
+events>
+
+events>
+
+events> db.event.aggregate([{$group: { _id: null, Firstevent: { $first:"$Event_date"}}}])
+[ { _id: null, Firstevent: ISODate('2024-12-11T06:31:15.000Z') } ]
+events> .exit
